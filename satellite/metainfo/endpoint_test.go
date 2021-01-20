@@ -76,6 +76,8 @@ func TestEndpoint_DeletePendingObject(t *testing.T) {
 }
 
 func TestEndpoint_DeleteObjectAnyStatus(t *testing.T) {
+	t.Skip()
+
 	bucketName := "a-bucket"
 	createCommittedObject := func(ctx context.Context, t *testing.T, planet *testplanet.Planet, data []byte) {
 		err := planet.Uplinks[0].Upload(ctx, planet.Satellites[0], bucketName, "object-filename", data)
