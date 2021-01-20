@@ -27,6 +27,10 @@ func main() {
 	migrator := NewMigrator(log, pointerDBStr, metabaseDBStr)
 	err := migrator.Migrate(ctx)
 	if err != nil {
-		panic(err)
+		fmt.Println("Error")
+		fmt.Println(err)
+		os.Exit(1)
+	} else {
+		fmt.Println("Finished without error")
 	}
 }

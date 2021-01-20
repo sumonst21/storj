@@ -62,7 +62,8 @@ func (m *Migrator) Migrate(ctx context.Context) (err error) {
 	}
 	defer func() { err = errs.Combine(err, metabaseConn.Close(ctx)) }()
 
-	err = pointerdb.IterateWithoutLookupLimit(ctx, storage.IterateOptions{
+	count := 0
+	return pointerdb.IterateWithoutLookupLimit(ctx, storage.IterateOptions{
 		Recurse: true,
 		Limit:   500,
 	}, func(ctx context.Context, it storage.Iterator) error {
@@ -87,6 +88,11 @@ func (m *Migrator) Migrate(ctx context.Context) (err error) {
 				continue
 			}
 
+			if count%10000 == 0 {
+				fmt.Println("Processed objects:", count, time.Now())
+			}
+			count++
+
 			streamID, err := uuid.New()
 			if err != nil {
 				return err
@@ -100,7 +106,8 @@ func (m *Migrator) Migrate(ctx context.Context) (err error) {
 
 			segmentsCount := streamMeta.NumberOfSegments
 			if segmentsCount == 0 {
-				return errors.New("unsupported case")
+				fmt.Println("segments count zero")
+				continue
 			}
 
 			totalEncryptedSize := pointer.SegmentSize
@@ -190,7 +197,6 @@ func (m *Migrator) Migrate(ctx context.Context) (err error) {
 		}
 		return nil
 	})
-	return err
 }
 
 func insertSegment(ctx context.Context, metabaseConn *pgx.Conn, streamID uuid.UUID, position uint64, pointer *pb.Pointer, segmentMeta *pb.SegmentMeta) (err error) {
