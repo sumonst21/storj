@@ -134,7 +134,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/montanaflynn/stats v0.5.0 // indirect
-	github.com/nats-io/jwt v1.1.0 // indirect
 	github.com/nats-io/nats.go v1.10.0 // indirect
 	github.com/nats-io/nkeys v0.2.0 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
