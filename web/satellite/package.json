@@ -20,7 +20,7 @@
     "apollo-link-context": "1.0.20",
     "apollo-link-error": "1.1.13",
     "apollo-link-http": "1.5.17",
-    "aws-sdk": "2.1128.0",
+    "aws-sdk": "2.1692.0",
     "bip39": "3.0.4",
     "chart.js": "2.9.4",
     "core-js": "3.22.4",
@@ -33,7 +33,7 @@
     "stream-browserify": "3.0.0",
     "stripe": "8.215.0",
     "util": "0.12.4",
-    "vue": "2.7.10",
+    "vue": "3.0.0",
     "vue-chartjs": "3.5.1",
     "vue-class-component": "7.2.6",
     "vue-clipboard2": "0.3.3",
@@ -86,7 +86,7 @@
     "vue-eslint-parser": "9.0.3",
     "vue-sanitize": "0.2.2",
     "vue-svg-loader": "0.17.0-beta.2",
-    "vue-template-compiler": "2.7.10",
+    "vue-template-compiler": "2.7.16",
     "webpack-bundle-analyzer": "4.5.0"
   },
   "postcss": {
